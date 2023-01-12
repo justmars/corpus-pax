@@ -16,8 +16,10 @@ persons_env = Environment(
 )
 
 DETAILS_FILE = "details.yaml"
+"""Each member / entity folder will have a `details.yaml."""
+
 AVATAR_IMG = "avatar.jpeg"
-"""Each member / entity folder will have a `details.yaml` and an `avatar.jpeg`."""
+"""Each member / entity folder will have an `avatar.jpeg`."""
 
 
 class RankStatus(int, Enum):
@@ -28,22 +30,28 @@ class RankStatus(int, Enum):
 
 
 class MemberURL(NamedTuple):
-    """Each corpus entity in the `gh` repository will contain 2 files: a details.yaml and an avatar.jpeg.
+    """Each corpus entity in the `gh` repository will
+    contain 2 files: a details.yaml and an avatar.jpeg.
 
-    The repository's root should contain 2 folders to `orgs` and `members`:
+    The repository's root should contain 2 folders to `orgs`
+    and `members`:
 
     orgs/ <-- `kind`
         org_a/ <-- `id`
 
-            - details.yaml # contains the key value pairs for the org represented by the id
-            - avatar.jpeg # is the image that should be placed in cloudflare
+            - details.yaml # contains the key value pairs
+                for the org represented by the id
+            - avatar.jpeg # is the image that
+                should be placed in cloudflare
     members/ # same structure for orgs
         member_xyz/
 
             - details.yaml
             - avatar.jpeg
 
-    Assuming a valid `id` url to the github `gh` repo, the `setter()` function will generate the proper `img_id` to use as a filename for the `cf` storage area.
+    Assuming a valid `id` url to the github `gh` repo, the `setter()` function
+    will generate the proper `img_id` to use as a filename for the `cf`
+    storage area.
     """
 
     id: str
@@ -52,7 +60,8 @@ class MemberURL(NamedTuple):
 
     @classmethod
     def setter(cls, url: str, with_img_id: bool = True):
-        """Retrieve the id from the path and create a new url for parsing the registered member."""
+        """Retrieve the id from the path and create a new url for
+        parsing the registered member."""
         obj = urlparse(url)
         parts = obj.path.split("/")
         pk = parts[-1]
@@ -65,7 +74,8 @@ class MemberURL(NamedTuple):
 
     @classmethod
     def set_avatar_from(cls, id: str, url: str) -> str:
-        """Add the avatar jpeg from github to cloudflare, retrieve the cloudflare id."""
+        """Add the avatar jpeg from github to cloudflare,
+        retrieve the cloudflare id."""
         obj = f"{url}/{AVATAR_IMG}"
         if img_resp := gh.fetch(obj):
             if img_resp.status_code != HTTPStatus.OK:
@@ -79,7 +89,8 @@ class MemberURL(NamedTuple):
 
 
 class RegisteredMember(BaseModel):
-    """Common validator for corpus entities: Individuals and Orgs. Note that the `col` attribute is for use in `sqlpyd`."""
+    """Common validator for corpus entities: Individuals and Orgs.
+    Note that the `col` attribute is for use in `sqlpyd`."""
 
     id: str = Field(col=str)
     created: float = Field(col=float)
@@ -174,7 +185,9 @@ class RegisteredMember(BaseModel):
 
     @classmethod
     def from_url(cls, url: str, set_img: bool = False):
-        """Each member url can be converted to a fully validated object via a valid Github `url`; if `set_img` is set to true, an `img_id` is created on Cloudflare."""
+        """Each member url can be converted to a fully validated object
+        via a valid Github `url`; if `set_img` is set to true,
+        an `img_id` is created on Cloudflare."""
         obj = MemberURL.setter(url, set_img)
         return cls(
             **cls.extract_details(obj.target_url),

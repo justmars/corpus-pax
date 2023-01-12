@@ -86,7 +86,7 @@ class Individual(RegisteredMember, IndividualBio, TableConfig):
     ):
         indiv_data = cls.from_url(url, replace_img)
         tbl = c.table(cls)
-        row = tbl.insert(indiv_data.dict(), replace=True, pk="id")  # type: ignore
+        row = tbl.insert(indiv_data.dict(), replace=True, pk="id")  # type: ignore # noqa: E501
         if pk := row.last_pk:
             if indiv_data.areas:
                 PracticeArea.associate(tbl, pk, indiv_data.areas)
@@ -130,7 +130,7 @@ class Org(RegisteredMember, TableConfig):
     ):
         org_data = cls.from_url(url, replace_img)
         tbl = c.table(cls)
-        row = tbl.insert(org_data.dict(), replace=True, pk="id")  # type: ignore
+        row = tbl.insert(org_data.dict(), replace=True, pk="id")  # type: ignore # noqa: E501
         if pk := row.last_pk:
             if org_data.areas:
                 PracticeArea.associate(tbl, pk, org_data.areas)

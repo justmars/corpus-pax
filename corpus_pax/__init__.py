@@ -9,3 +9,4 @@ from .__main__ import (  # type: ignore
 )
 from .articles import Article
 from .entities import Individual, Org, OrgMember, PersonCategory, PracticeArea
+from .utils import delete_tables_with_prefix

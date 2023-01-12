@@ -41,9 +41,10 @@ class Article(TableConfig):
 
     @classmethod
     def extract_articles(cls):
-        """Based on entries parsed from github, ignore files not formatted in .md
-        and extract the Pydantic-style model based on frontmatter metadata of
-        each markdown article represented by the entries.
+        """Based on entries from a Github folder, ignore files
+        not formatted in .md and extract the Pydantic-model;
+        the model is based on the frontmatter metadata of each
+        markdown article.
         """
         articles = []
         for entry in gh.fetch_articles():

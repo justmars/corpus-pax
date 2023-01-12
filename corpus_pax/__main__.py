@@ -2,33 +2,12 @@ from sqlpyd import Connection
 
 from .articles import Article
 from .entities import Individual, Org, OrgMember
-
-TABLE_LIST = [
-    # delete all area related tables
-    "pax_tbl_areas_pax_tbl_individuals",
-    "pax_tbl_areas_pax_tbl_orgs",
-    "pax_tbl_areas",
-    # delete all category related tables
-    "pax_tbl_categories_pax_tbl_individuals",
-    "pax_tbl_categories_pax_tbl_orgs",
-    "pax_tbl_categories",
-    # delete all org related tables
-    "pax_tbl_org_members",
-    "pax_tbl_orgs_fts",
-    "pax_tbl_orgs",
-    # delete all article related tables
-    "pax_tbl_articles_pax_tbl_individuals",
-    "pax_tbl_articles_pax_tbl_tags",
-    "pax_tbl_articles_fts",
-    "pax_tbl_articles",
-    # finally, delete the individual table
-    "pax_tbl_individuals_fts",
-    "pax_tbl_individuals",
-]
+from .utils import delete_tables_with_prefix
 
 
 def init_person_tables(c: Connection) -> Connection:
-    """Create tables related to persons, i.e. individuals, organizations, articles."""
+    """Create tables related to persons, i.e. individuals,
+    organizations, articles."""
 
     c.create_table(Individual)
     c.create_table(Org)
@@ -60,8 +39,7 @@ def add_articles_from_api(c: Connection):
 def setup_pax(db_path: str, replace_img: bool = False) -> Connection:
     """Recreates tables and populates the same."""
     c = Connection(DatabasePath=db_path, WAL=True)
-    for tbl in TABLE_LIST:
-        c.db.execute(f"drop table if exists {tbl}")
+    delete_tables_with_prefix(c, ["pax"])
     init_person_tables(c)
     add_individuals_from_api(c, replace_img)
     add_organizations_from_api(c, replace_img)

@@ -25,10 +25,13 @@ class CloudflareSetup(BaseSettings):
 
     @property
     def url(self):
-        return f"https://api.cloudflare.com/client/v4/accounts/{self.Account}/images/v1"
+        return f"https://api.cloudflare.com/client/v4/accounts/{self.Account}/images/v1"  # noqa: E501
 
     def set_avatar(self, img_id: str, img: bytes) -> str:
-        """Upload avatar by to Cloudflare Images. This implies an image with the word `avatar` as the filename with an image extenion like .png, .jpeg."""
+        """Upload avatar by to Cloudflare Images. This implies an
+        image with the word `avatar` as the filename with an
+        image extenion like .png, .jpeg."""
+
         # delete existing image with same id
         _ = httpx.delete(
             url=f"{self.url}/{img_id}",  # remove image with same id
@@ -39,7 +42,7 @@ class CloudflareSetup(BaseSettings):
             headers={"Authorization": f"Bearer {self.Token}"},
             data={"id": img_id},
             files={"file": (img_id, img)},
-            timeout=httpx.Timeout(60.0),  # httpx defaults to 10 sec
+            timeout=httpx.Timeout(120.0),  # httpx defaults to 10 sec
         )
         if r.status_code == HTTPStatus.OK:
             return img_id
@@ -108,7 +111,8 @@ class GithubAccess(BaseSettings):
         raise Exception(f"Could not fetch articles content: {url}")
 
     def fetch_article_date_modified(self, path: str) -> float:
-        """Get the latest commit date of an article `path` to get its date last modified"""
+        """Get the latest commit date of an article
+        `path` to get its date last modified."""
         url = f"{ARTICLES_URL}/commits"
         params = {"path": path, "page": 1, "per_page": 1}
         if resp := self.fetch(url=url, media_type="+json", params=params):

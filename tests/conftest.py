@@ -61,7 +61,7 @@ def session_with_objs(individual_records, org_records):
     for i in individual_records:
         tbl = c.table(Individual)
         indiv_obj = Individual(**i)
-        row = tbl.insert(indiv_obj.dict(), replace=True, pk="id")  # type: ignore
+        row = tbl.insert(indiv_obj.dict(), replace=True, pk="id")  # type: ignore # noqa: E501
         if pk := row.last_pk:
             if indiv_obj.areas:
                 PracticeArea.associate(tbl, pk, indiv_obj.areas)
