@@ -1,0 +1,26 @@
+display_name: ABC-XYZ Law
+official_name: Alpha Bravo Charlie X-Ray Yankee Zulu Law Firm
+caption: A General Purpose Law Firm
+description: A fictional law firm to demonstrate membership in the platform
+email: abc@xyz.com
+url: null
+creation_date: '2009-01-01'
+search_rank: 1
+categories:
+- law firm
+areas:
+- data privacy law
+- fintech
+- celebrity law
+- mergers and acquisitions
+- corporate litigation
+- criminal litigation
+- estate planning
+- mining law
+members:
+- rank: 1
+  role: Partner
+  account_email: maria@abcxyz.law
+- rank: 2
+  role: Partner
+  account_email: fernando@abcxyz.law

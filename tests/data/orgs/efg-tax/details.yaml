@@ -1,0 +1,30 @@
+display_name: EFG Accounting
+official_name: Echo Foxtrot Golf Tax Firm
+caption: A Highly Specialized Tax Firm
+description: A fictional tax firm to demonstrate membership in the platform
+email: abc@efg.com
+url: null
+creation_date: '2019-01-01'
+search_rank: 1
+categories:
+- accounting firm
+- startup
+areas:
+- fintech
+- digital transformation
+- tax audit
+- celebrity law
+- real property taxation
+members:
+- rank: 1
+  role: Partner
+  account_email: joyjoy@efgacct.tax
+- rank: 2
+  role: Consultant
+  account_email: fernando@abcxyz.law
+- rank: 2
+  role: Consultant
+  account_email: maria@abcxyz.law
+- rank: 3
+  role: Consultant
+  account_email: mv@lawsql.com

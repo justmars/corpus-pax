@@ -1,0 +1,23 @@
+display_name: Legal Tech PH # will be used as shorthand of the official firm name
+official_name: Legal Tech Philippines Association, Inc.
+caption: Linking Law & Tech
+description: |
+  Legal Tech Philippines Association, Inc. helps everyone understand tech, regulations, and how they intersect, through industry best practices.
+email: info@legaltechph.com
+url: legaltechph.com
+creation_date: '2021-01-01'
+search_rank: 1
+categories:
+- non-profit org
+areas:
+- fintech
+- digital transformation
+- legal research
+members:
+- rank: 1
+  role: Chairman
+  display_email: mv@legaltechph.com
+  account_email: mv@lawsql.com
+- rank: 2
+  role: Chief Bot
+  account_email: bot@lawsql.com

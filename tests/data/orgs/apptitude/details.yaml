@@ -1,0 +1,19 @@
+display_name: Apptitude
+official_name: Apptitude Info Tech Solutions
+caption: Authenticated Learning
+description: |
+  LMS compliant with the Philippine Supreme Court rules of authenticated compliance. Originally made to as a custom LMS, Apptitude transitioned to a specialized variant for authenticated learning. It's now experimenting with "learn-to-earn" system whereby enrolling in a course gets you "coins" that you can use within the system to purchase more courses.
+email: info@apptitude.xyz
+url: apptitude.xyz
+creation_date: '2019-01-01'
+search_rank: 1
+categories:
+- startup
+areas:
+- legaltech
+- legal research
+members:
+- rank: 1
+  role: CEO
+  display_email: mars@apptitude.xyz
+  account_email: mv@lawsql.com
