@@ -1,6 +1,6 @@
 # corpus-pax
 
-Initial, foundational sqlite tables with generic users, organizations, and articles.
+[sqlpyd](https://github.com/justmars/sqlpyd) tables: generic users, organizations, and articles.
 
 ```mermaid
 flowchart TB
