@@ -70,16 +70,22 @@ Since it's hard to correct the m2m tables, `setup_pax()` drops all the tables fi
 
 ## Prerequisites
 
-Repository | Description
---:|:--
-[corpus-entities](https://github.com/justmars/corpus-entities) | yaml-formatted member and org files
-[lawsql-articles](https://github.com/justmars/lawsql-articles) | markdown-styled articles with frontmatter
+### Repositories
+
+Different repositories involved:
+
+repository | status | type | purpose
+:--|:--:|:--:|:--
+[lawsql-articles](https://github.com/justmars/lawsql-articles) | private | data source | used by _corpus-pax_; yaml-formatted member and org files
+[corpus-entities](https://github.com/justmars/corpus-entities) | private | data source | used by _corpus-pax_; markdown-styled articles with frontmatter
+[corpus](https://github.com/justmars/corpus) | private | data source | used by _corpus-base_
+[corpus-pax](https://github.com/justmars/corpus-pax) | public | sqlite i/o | functions to create pax-related tables
 
 Since data concerning members will be pulled from such repositories, make sure the individual / org fields in resources match the data pulled from `corpus-entities`.
 
 Each avatar image should be named `avatar.jpeg` so that these can be uploaded to Cloudflare.
 
-## Supply .env
+### .env
 
 Create an .env file to create/populate the database. See `sample .env` highlighting the following variables:
 
