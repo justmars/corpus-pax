@@ -1,6 +1,8 @@
 .DS_Store
 .vscode
+.ruff_cache
 test.db*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

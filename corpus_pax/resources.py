@@ -16,7 +16,7 @@ persons_env = Environment(
 )
 
 DETAILS_FILE = "details.yaml"
-"""Each member / entity folder will have a `details.yaml."""
+"""Each member / entity folder will have a `details.yaml`."""
 
 AVATAR_IMG = "avatar.jpeg"
 """Each member / entity folder will have an `avatar.jpeg`."""
@@ -30,28 +30,12 @@ class RankStatus(int, Enum):
 
 
 class MemberURL(NamedTuple):
-    """Each corpus entity in the `gh` repository will
-    contain 2 files: a details.yaml and an avatar.jpeg.
-
-    The repository's root should contain 2 folders to `orgs`
-    and `members`:
-
-    orgs/ <-- `kind`
-        org_a/ <-- `id`
-
-            - details.yaml # contains the key value pairs
-                for the org represented by the id
-            - avatar.jpeg # is the image that
-                should be placed in cloudflare
-    members/ # same structure for orgs
-        member_xyz/
-
-            - details.yaml
-            - avatar.jpeg
-
-    Assuming a valid `id` url to the github `gh` repo, the `setter()` function
-    will generate the proper `img_id` to use as a filename for the `cf`
-    storage area.
+    """
+    Name | Type | Description
+    :--:|:--:|:--:
+    id | str | Folder name from the github repository `gh`
+    img_id | str | `avatar.jpeg` stored in Cloudflare
+    target_url | str | created url from `cls.setter()` based on the `img_id`
     """
 
     id: str
@@ -60,8 +44,9 @@ class MemberURL(NamedTuple):
 
     @classmethod
     def setter(cls, url: str, with_img_id: bool = True):
-        """Retrieve the id from the path and create a new url for
-        parsing the registered member."""
+        """Assuming a valid `id` url to the github `gh` repo,
+        the `setter()` function will generate the proper `img_id`
+        to use as a filename for the Cloudflare storage area."""
         obj = urlparse(url)
         parts = obj.path.split("/")
         pk = parts[-1]
@@ -74,8 +59,8 @@ class MemberURL(NamedTuple):
 
     @classmethod
     def set_avatar_from(cls, id: str, url: str) -> str:
-        """Add the avatar jpeg from github to cloudflare,
-        retrieve the cloudflare id."""
+        """Add the avatar jpeg from Github to Cloudflare,
+        then retrieve the Cloudflare ID."""
         obj = f"{url}/{AVATAR_IMG}"
         if img_resp := gh.fetch(obj):
             if img_resp.status_code != HTTPStatus.OK:

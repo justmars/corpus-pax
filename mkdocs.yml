@@ -1,0 +1,48 @@
+site_name: Corpus Pax Docs
+site_description: Generic users, organizations, and articles for LawSQL.com
+repo_url: https://github.com/justmars/citation-docket
+theme:
+  name: "material"
+  features:
+  - navigation.tabs
+  - navigation.tabs.sticky
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+nav:
+- Overview: index.md
+- entities.md
+- articles.md
+- resources.md
+- rationale.md
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_root_toc_entry: false
+            show_category_heading: true
+            show_source: true
+            heading_level: 2
+  - search:
+      lang: en
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
