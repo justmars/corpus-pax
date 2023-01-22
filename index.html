@@ -385,12 +385,25 @@
     Prerequisites
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supply-env" class="md-nav__link">
-    Supply .env
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repositories" class="md-nav__link">
+    Repositories
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    .env
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -529,12 +542,25 @@
     Prerequisites
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supply-env" class="md-nav__link">
-    Supply .env
+    <nav class="md-nav" aria-label="Prerequisites">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#repositories" class="md-nav__link">
+    Repositories
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env" class="md-nav__link">
+    .env
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -670,27 +696,47 @@ organized according to the following structure:</p>
   </div>
 
 </div><h2 id="prerequisites">Prerequisites</h2>
+<h3 id="repositories">Repositories</h3>
+<p>Different repositories involved:</p>
 <table>
 <thead>
 <tr>
-<th align="right">Repository</th>
-<th align="left">Description</th>
+<th align="left">repository</th>
+<th align="center">status</th>
+<th align="center">type</th>
+<th align="left">purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="right"><a href="https://github.com/justmars/corpus-entities">corpus-entities</a></td>
-<td align="left">yaml-formatted member and org files</td>
+<td align="left"><a href="https://github.com/justmars/lawsql-articles">lawsql-articles</a></td>
+<td align="center">private</td>
+<td align="center">data source</td>
+<td align="left">used by <em>corpus-pax</em>; yaml-formatted member and org files</td>
 </tr>
 <tr>
-<td align="right"><a href="https://github.com/justmars/lawsql-articles">lawsql-articles</a></td>
-<td align="left">markdown-styled articles with frontmatter</td>
+<td align="left"><a href="https://github.com/justmars/corpus-entities">corpus-entities</a></td>
+<td align="center">private</td>
+<td align="center">data source</td>
+<td align="left">used by <em>corpus-pax</em>; markdown-styled articles with frontmatter</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/justmars/corpus">corpus</a></td>
+<td align="center">private</td>
+<td align="center">data source</td>
+<td align="left">used by <em>corpus-base</em></td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/justmars/corpus-pax">corpus-pax</a></td>
+<td align="center">public</td>
+<td align="center">sqlite i/o</td>
+<td align="left">functions to create pax-related tables</td>
 </tr>
 </tbody>
 </table>
 <p>Since data concerning members will be pulled from such repositories, make sure the individual / org fields in resources match the data pulled from <code>corpus-entities</code>.</p>
 <p>Each avatar image should be named <code>avatar.jpeg</code> so that these can be uploaded to Cloudflare.</p>
-<h2 id="supply-env">Supply .env</h2>
+<h3 id="env">.env</h3>
 <p>Create an .env file to create/populate the database. See <code>sample .env</code> highlighting the following variables:</p>
 <ol>
 <li>Cloudflare <code>CF_ACCT</code></li>
