@@ -1,8 +1,8 @@
 ---
 hide:
-  - navigation
+- navigation
 ---
-# Overview
+# corpus-pax Docs
 
 Using a [sqlpyd](https://github.com/justmars/sqlpyd)-fashioned database, create tables for generic users, organizations, and articles, sourcing the data from Github repositories.
 
@@ -25,25 +25,33 @@ pax--cloudflare api-->cf(cloudflare images)
 Each corpus entity in the `/corpus-entities` repository will contain 2 files: a `details.yaml` and an `avatar.jpeg`
 organized according to the following structure:
 
-```text
-<gh-repo>/ # github repository
-├─members/
-    ├─<id-of-individual-1>/
-    │ ├─details.yaml
-    │ └─avatar.jpeg
-    ├─<id-of-individual-2>/
-    │ ├─details.yaml
-    │ └─avatar.jpeg
-|-orgs/
-    ├─<id-of-org-1>/
-    │ ├─details.yaml
-    │ └─avatar.jpeg
-    ├─<id-of-org-2>/
-    │ ├─details.yaml
-    │ └─avatar.jpeg
+```yaml
+/<gh-repo> # github repository
+  /members
+    /<id-of-individual-1>
+      - details.yaml
+      - avatar.jpeg
+  /orgs
+    /<id-of-org-1>
+      - details.yaml
+      - avatar.jpeg
 ```
 
 The `details.yaml` file should contain the key value pairs for the org represented by the id.
+
+## Rationale
+
+### Why Github
+
+The names and profiles of individuals and organizations are stored in Github. These are pulled into the application via an API call requiring the use of a personal access token.
+
+### Why Cloudflare Images
+
+Individuals and organizations have images stored in Github. To persist and optimize images for the web, I use [Cloudflare Images](https://www.cloudflare.com/products/cloudflare-images/) to take advantage of modern image formats and customizable variants.
+
+### Why sqlite
+
+The initial data is simple. This database however will be the foundation for a more complicated schema. Sqlite seems a better fit for experimentation and future app use (Android and iOS rely on sqlite).
 
 ## Run
 
@@ -94,3 +102,23 @@ Create an .env file to create/populate the database. See `sample .env` highlight
 4. `DB_FILE` (sqlite)
 
 Note the workflow (main.yml) where the secrets are included for Github actions. Ensure these are set in the repository's `<url-to-repo>/settings/secrets/actions`, making the proper replacements when the tokens for Cloudflare and Github expire.
+
+---
+
+## Articles
+
+::: corpus_pax.articles.Article
+
+## Entities
+
+### RegisteredMember
+
+::: corpus_pax.resources.RegisteredMember
+
+### Individual
+
+::: corpus_pax.entities.Individual
+
+### Org
+
+::: corpus_pax.entities.Org

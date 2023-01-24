@@ -1,20 +1,16 @@
 site_name: Corpus Pax Docs
 site_description: Generic users, organizations, and articles for LawSQL.com
-repo_url: https://github.com/justmars/citation-docket
+site_url: https://lawsql.com
+site_author: Marcelino Veloso III
+repo_url: https://github.com/justmars/corpus-pax
 theme:
   name: "material"
-  features:
-  - navigation.tabs
-  - navigation.tabs.sticky
   palette:
-    # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       accent: pink
@@ -22,11 +18,13 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 nav:
-- Overview: index.md
-- entities.md
-- articles.md
-- resources.md
-- rationale.md
+- index.md
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/justmars
+      name: justmars on Github
+copyright: Copyright &copy; Marcelino Veloso III
 plugins:
   - mkdocstrings:
       handlers:
@@ -35,7 +33,7 @@ plugins:
             show_root_toc_entry: false
             show_category_heading: true
             show_source: true
-            heading_level: 2
+            heading_level: 3
   - search:
       lang: en
 markdown_extensions:

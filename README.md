@@ -2,7 +2,7 @@
 
 ![Github CI](https://github.com/justmars/corpus-pax/actions/workflows/main.yml/badge.svg)
 
-Generic users, organizations, and articles utilized in the [LawSQL dataset](https://lawsql.com).
+Using Github API (to pull individuals, orgs, and article content), setup a local sqlite database, syncing images to Cloudflarel utilized in the [LawSQL dataset](https://lawsql.com).
 
 ## Documentation
 
