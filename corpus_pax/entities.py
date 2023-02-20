@@ -3,8 +3,9 @@ import sqlite3
 from pydantic import EmailStr, Field, conint, constr, validator
 from sqlite_utils.db import Table
 from sqlpyd import Connection, IndividualBio, TableConfig
+from .github import fetch_entities
 
-from ._api import gh
+
 from .resources import RegisteredMember, persons_env
 
 
@@ -75,7 +76,7 @@ class Individual(RegisteredMember, IndividualBio, TableConfig):
 
     @classmethod
     def list_members_repo(cls):
-        return gh.fetch_entities("members")
+        return fetch_entities("members")
 
     @classmethod
     def make_or_replace(
@@ -101,7 +102,7 @@ class Org(RegisteredMember, TableConfig):
 
     @classmethod
     def list_orgs_repo(cls):
-        return gh.fetch_entities("orgs")
+        return fetch_entities("orgs")
 
     def set_membership_rows(self, c: Connection) -> Table | None:
         member_list = []

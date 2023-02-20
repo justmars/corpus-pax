@@ -8,9 +8,11 @@ from urllib.parse import urlparse
 import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
 from pydantic import BaseModel, EmailStr, Field, HttpUrl
+from start_sdk import CFImage
+from .github import gh
 
-from ._api import cf, gh
 
+cf = CFImage()
 persons_env = Environment(
     loader=PackageLoader("corpus_pax"), autoescape=select_autoescape()
 )
@@ -62,14 +64,16 @@ class MemberURL(NamedTuple):
         """Add the avatar jpeg from Github to Cloudflare,
         then retrieve the Cloudflare ID."""
         obj = f"{url}/{AVATAR_IMG}"
-        if img_resp := gh.fetch(obj):
+        if img_resp := gh.get(obj):
             if img_resp.status_code != HTTPStatus.OK:
                 raise Exception(
                     f"See {img_resp.status_code=} github file {obj}; avatar"
                     f" {url=}"
                 )
             if img := io.BytesIO(img_resp.content):
-                return cf.set_avatar(id, img.read())
+                cf.delete(id)
+                cf.post(id, img.read())
+                return id
         raise Exception(f"Could not setup avatar {url=}")
 
 
@@ -164,7 +168,7 @@ class RegisteredMember(BaseModel):
     @classmethod
     def extract_details(cls, url: str) -> dict:
         """Convert the yaml file in the repository to a dict."""
-        if details_resp := gh.fetch(f"{url}/{DETAILS_FILE}"):
+        if details_resp := gh.get(f"{url}/{DETAILS_FILE}"):
             return yaml.safe_load(details_resp.content)
         raise Exception(f"Could not get details from {url=}")
 

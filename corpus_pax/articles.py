@@ -7,7 +7,7 @@ from dateutil import parser
 from pydantic import EmailStr, Field, HttpUrl, constr
 from sqlpyd import Connection, TableConfig
 
-from ._api import gh
+from .github import fetch_article_date_modified, fetch_articles, gh
 from .entities import Individual
 
 
@@ -47,12 +47,12 @@ class Article(TableConfig):
         markdown article.
         """
         articles = []
-        for entry in gh.fetch_articles():
-            if fn := entry.get("name"):
-                if fn.endswith(".md"):
+        for entry in fetch_articles():
+            if filename := entry.get("name"):
+                if filename.endswith(".md"):
                     if url := entry.get("url"):
-                        id = fn.removesuffix(".md")
-                        modified = gh.fetch_article_date_modified(fn)
+                        id = filename.removesuffix(".md")
+                        modified = fetch_article_date_modified(filename)
                         details = cls.extract_markdown_postmatter(url)
                         article = cls(id=id, modified=modified, **details)
                         articles.append(article)
@@ -61,7 +61,7 @@ class Article(TableConfig):
     @classmethod
     def extract_markdown_postmatter(cls, url: str) -> dict:
         """Convert the markdown/frontmatter file fetched via url to a dict."""
-        mdfile = gh.fetch(url)
+        mdfile = gh.get(url)
         post = frontmatter.loads(mdfile.content)
         d = parser.parse(post["date"]).astimezone(ZoneInfo("Asia/Manila"))
         return {
