@@ -1,4 +1,4 @@
-__version__ = "0.1.13"
+__version__ = "0.1.14"
 
 from .__main__ import (  # type: ignore
     add_articles_from_api,
