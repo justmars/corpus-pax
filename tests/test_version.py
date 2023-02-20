@@ -1,5 +1,10 @@
-from corpus_pax import __version__
+import toml
+
+import corpus_pax
 
 
 def test_version():
-    assert __version__ == "0.1.9"
+    assert (
+        toml.load("pyproject.toml")["tool"]["poetry"]["version"]
+        == corpus_pax.__version__
+    )

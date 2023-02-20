@@ -92,19 +92,11 @@ class GithubAccess(BaseSettings):
         ```python shell
         >>> from corpus_pax._api import gh
         >>> arts = gh.fetch_articles()
-        >>> arts[1] # arts[0] is an __init__.py file
-        {'name': 'digital-legal-text.md',
-        'path': 'content/digital-legal-text.md',
-        'sha': xxx,
-        'size': 7714,
-        'url': xxx,
-        'html_url': xxx,
-        'git_url': xxx,
-        'download_url': xxx,
-        'type': 'file',
-        '_links': {'self': xxx, 'git': xxx, 'html': xxx}}
+        >>> arts[1].keys() # note arts[0] is an __init__.py file
+        dict_keys(['name', 'path', 'sha', 'size', 'url', 'html_url', 'git_url', 'download_url', 'type', '_links'])
+
         ```
-        """
+        """  # noqa: E501
         url = f"{ARTICLES_URL}/contents/content"
         if resp := self.fetch(url):
             return resp.json()
