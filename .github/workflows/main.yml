@@ -9,9 +9,9 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: "3.11"
       - name: Install Dependencies
@@ -27,9 +27,9 @@ jobs:
       matrix:
         python-version: ['3.11']
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Setup Poetry
@@ -42,8 +42,8 @@ jobs:
         run: poetry install
       - name: Test with Pytest
         env:
-          CF_ACCT: ${{secrets.CF_ACCT}}
-          CF_TOKEN: ${{secrets.CF_TOKEN}}
+          CF_IMG_ACCT: ${{secrets.CF_ACCT}}
+          CF_IMG_TOKEN: ${{secrets.CF_TOKEN}}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           DB_FILE: ${{secrets.DB_FILE}}
         run: poetry run pytest
