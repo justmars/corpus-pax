@@ -1636,14 +1636,14 @@ tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
 name = "start-sdk"
-version = "0.0.3"
+version = "0.0.4"
 description = "Settings for Github, Cloudflare Images API"
 category = "main"
 optional = false
 python-versions = ">=3.11,<4.0"
 files = [
-    {file = "start_sdk-0.0.3-py3-none-any.whl", hash = "sha256:f1a1ce1bb300a0a2871818c025716ad1cbee453b20e8c3937208f87a97418b47"},
-    {file = "start_sdk-0.0.3.tar.gz", hash = "sha256:411fa3595af3382eaab5eecf7bafbc5533af21b2e2215e0166c0c9fb01baf77f"},
+    {file = "start_sdk-0.0.4-py3-none-any.whl", hash = "sha256:c38ac3b323b8df1645d0281a6beb63c0e4d381a7b4432726fa34a276076a4277"},
+    {file = "start_sdk-0.0.4.tar.gz", hash = "sha256:c7c498ddaf60a8a41f91a1e9239dd52b67485542658ac4263e5945acead4802c"},
 ]
 
 [package.dependencies]
@@ -1842,10 +1842,11 @@ category = "dev"
 optional = false
 python-versions = "*"
 files = [
+    {file = "wcwidth-0.2.6-py2.py3-none-any.whl", hash = "sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e"},
     {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "82cbef6ab384851b783e7c6576bc44428aa642b67aba0dba3ed3458d6c31ea85"
+content-hash = "65edae5073b439c7139af24e7740958cadeea99a62cc2c4f3f28c3c738b108f0"
