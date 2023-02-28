@@ -84,18 +84,18 @@ files = [
 
 [[package]]
 name = "boto3"
-version = "1.26.79"
+version = "1.26.80"
 description = "The AWS SDK for Python"
 category = "main"
 optional = false
 python-versions = ">= 3.7"
 files = [
-    {file = "boto3-1.26.79-py3-none-any.whl", hash = "sha256:049de631cc03726a14b8eb24ac9ec2a48b0624197796f36166da809fdc9b9a7f"},
-    {file = "boto3-1.26.79.tar.gz", hash = "sha256:73d7bd1f16118ef0dfe936e0420cd76b02d1aedb75330ebda51168458ab752ac"},
+    {file = "boto3-1.26.80-py3-none-any.whl", hash = "sha256:704065abc8fdd2519491c11eeb65d69f21d0baf278b66b0b44090cc09c8c7bf8"},
+    {file = "boto3-1.26.80.tar.gz", hash = "sha256:7816da48b9626a482e955628ade527a4a84ff462043ac1a129011f7f66e8648c"},
 ]
 
 [package.dependencies]
-botocore = ">=1.29.79,<1.30.0"
+botocore = ">=1.29.80,<1.30.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.6.0,<0.7.0"
 
@@ -104,14 +104,14 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "botocore"
-version = "1.29.79"
+version = "1.29.80"
 description = "Low-level, data-driven core of boto 3."
 category = "main"
 optional = false
 python-versions = ">= 3.7"
 files = [
-    {file = "botocore-1.29.79-py3-none-any.whl", hash = "sha256:5f254f019e8641f8b2ba6dddc1f7541e8c6d25d976802392710b2fc4bac925b1"},
-    {file = "botocore-1.29.79.tar.gz", hash = "sha256:c7ded44062bed3b928944cfb09e1578ed3fed0e4c98de4f233f3c2056a8d491e"},
+    {file = "botocore-1.29.80-py3-none-any.whl", hash = "sha256:9a301cb4de8ec6efe4e4b6ebb29b4301decd5b00c1a7f9187652002efb520ad0"},
+    {file = "botocore-1.29.80.tar.gz", hash = "sha256:19d4cadc79f75b31ffa78b5e750833d53e0edfe414d308b6788382ad32d23e12"},
 ]
 
 [package.dependencies]
@@ -1636,14 +1636,14 @@ tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
 name = "start-sdk"
-version = "0.0.4"
+version = "0.0.5"
 description = "Settings for Github, Cloudflare Images API"
 category = "main"
 optional = false
 python-versions = ">=3.11,<4.0"
 files = [
-    {file = "start_sdk-0.0.4-py3-none-any.whl", hash = "sha256:c38ac3b323b8df1645d0281a6beb63c0e4d381a7b4432726fa34a276076a4277"},
-    {file = "start_sdk-0.0.4.tar.gz", hash = "sha256:c7c498ddaf60a8a41f91a1e9239dd52b67485542658ac4263e5945acead4802c"},
+    {file = "start_sdk-0.0.5-py3-none-any.whl", hash = "sha256:2805d2fbdb4b99a5777c977c40d0eb7286dd8aad660cc3ec6b229dfa375057b0"},
+    {file = "start_sdk-0.0.5.tar.gz", hash = "sha256:39d6d5e39688a3532385e61fa638702f8f16a0d71af35fb9cda565cc8b3f870f"},
 ]
 
 [package.dependencies]
@@ -1709,14 +1709,14 @@ files = [
 
 [[package]]
 name = "types-python-dateutil"
-version = "2.8.19.8"
+version = "2.8.19.9"
 description = "Typing stubs for python-dateutil"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-python-dateutil-2.8.19.8.tar.gz", hash = "sha256:316c6b107d055bbd06324b71362e6104102220e6988aa4a388550aa3a8ad5d06"},
-    {file = "types_python_dateutil-2.8.19.8-py3-none-any.whl", hash = "sha256:6b44741d3e79b2f2ba595f6bfa96f1a5091a00703848547efb3bc5b71df3cf9d"},
+    {file = "types-python-dateutil-2.8.19.9.tar.gz", hash = "sha256:637716fb3afbdc7eb683f641171f874937af13149cd456a8c63e8f81127a39ed"},
+    {file = "types_python_dateutil-2.8.19.9-py3-none-any.whl", hash = "sha256:142a8749c18a3e16bfc5ba95cbd54750e7e613dec30285906602cafbf43c37b4"},
 ]
 
 [[package]]
@@ -1842,11 +1842,10 @@ category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "wcwidth-0.2.6-py2.py3-none-any.whl", hash = "sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e"},
     {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "65edae5073b439c7139af24e7740958cadeea99a62cc2c4f3f28c3c738b108f0"
+content-hash = "d05de7f60a34cd2274f69bd27d602d89b2723c09aa62bd46d52d320a608e0ae6"
