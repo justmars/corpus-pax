@@ -9,8 +9,8 @@ import yaml
 from jinja2 import Environment, PackageLoader, select_autoescape
 from pydantic import BaseModel, EmailStr, Field, HttpUrl
 from start_sdk import CFImage
-from .github import gh
 
+from .github import gh
 
 cf = CFImage()
 persons_env = Environment(

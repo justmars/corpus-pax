@@ -3,9 +3,8 @@ import sqlite3
 from pydantic import EmailStr, Field, conint, constr, validator
 from sqlite_utils.db import Table
 from sqlpyd import Connection, IndividualBio, TableConfig
+
 from .github import fetch_entities
-
-
 from .resources import RegisteredMember, persons_env
 
 

@@ -7,8 +7,8 @@ from dateutil import parser
 from pydantic import EmailStr, Field, HttpUrl, constr
 from sqlpyd import Connection, TableConfig
 
-from .github import fetch_article_date_modified, fetch_articles, gh
 from .entities import Individual
+from .github import fetch_article_date_modified, fetch_articles, gh
 
 
 class Tag(TableConfig):
