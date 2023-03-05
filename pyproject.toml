@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "corpus-pax"
-version = "0.1.20"
+version = "0.1.21"
 description = "Using Github API (to pull individuals, orgs, and article content), setup a local sqlite database, syncing images to Cloudflare."
 authors = ["Marcelino G. Veloso III <mars@veloso.one>"]
 readme = "README.md"

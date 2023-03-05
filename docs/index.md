@@ -99,7 +99,6 @@ Create an .env file to create/populate the database. See `sample .env` highlight
 1. Cloudflare `CF_ACCT`
 2. Cloudflare `CF_TOKEN`
 3. Github `GH_TOKEN`
-4. `DB_FILE` (sqlite)
 
 Note the workflow (main.yml) where the secrets are included for Github actions. Ensure these are set in the repository's `<url-to-repo>/settings/secrets/actions`, making the proper replacements when the tokens for Cloudflare and Github expire.
 
