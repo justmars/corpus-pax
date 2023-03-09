@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "corpus-pax"
-version = "0.1.24"
+version = "0.1.25"
 description = "Using Github API (to pull individuals, orgs, and article content), setup a local sqlite database, syncing images to Cloudflare."
 authors = ["Marcelino G. Veloso III <mars@veloso.one>"]
 readme = "README.md"
@@ -25,7 +25,7 @@ jinja2 = "^3.1.2"
 httpx = "^0.23.0"
 python-frontmatter = "^1.0.0"
 # custom
-start-sdk = "^0.0.8" # pydantic settings for github and cloudflare
+start-sdk = "^0.0.9" # pydantic settings for github and cloudflare
 sqlpyd = "^0.1.5" # merging sqlite with pydantic
 
 [tool.poetry.group.dev.dependencies]
