@@ -12,8 +12,6 @@ def delete_tables_with_prefix(c: Connection, target_prefixes: list[str]):
             order by name;
             """
         for row in c.db.execute_returning_dicts(sql):
-            c.db.execute(
-                f"""--sql
+            c.db.execute(f"""--sql
                 drop table if exists {row['name']};
-            """
-            )
+            """)

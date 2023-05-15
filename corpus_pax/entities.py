@@ -152,9 +152,7 @@ class OrgMember(TableConfig):
     individual_id: str | None = Field(
         None,
         title="Member ID",
-        description=(
-            "The Natural Person primary key derived from the account email."
-        ),
+        description="The Natural Person primary key derived from the account email.",
         col=str,
         fk=(Individual.__tablename__, "id"),
     )
@@ -179,9 +177,7 @@ class OrgMember(TableConfig):
     account_email: EmailStr = Field(
         ...,
         title="Account Email",
-        description=(
-            "Lookup the Natural Profile's email to get the individual's id."
-        ),
+        description="Lookup the Natural Profile's email to get the individual's id.",
         col=str,
     )
 

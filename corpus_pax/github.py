@@ -3,7 +3,7 @@ from zoneinfo import ZoneInfo
 
 from dateutil import parser
 from dotenv import find_dotenv, load_dotenv
-from start_sdk import Github
+from start_github import Github
 
 load_dotenv(find_dotenv())
 

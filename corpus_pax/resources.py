@@ -6,13 +6,13 @@ from typing import NamedTuple
 from urllib.parse import urlparse
 
 import yaml
+from cloudflare_images import CloudflareImagesAPIv1
 from jinja2 import Environment, PackageLoader, select_autoescape
 from pydantic import BaseModel, EmailStr, Field, HttpUrl
-from start_sdk import CFImage
 
 from .github import gh
 
-cf = CFImage()
+cf = CloudflareImagesAPIv1()
 persons_env = Environment(
     loader=PackageLoader("corpus_pax"), autoescape=select_autoescape()
 )
@@ -67,8 +67,7 @@ class MemberURL(NamedTuple):
         if img_resp := gh.get(obj):
             if img_resp.status_code != HTTPStatus.OK:
                 raise Exception(
-                    f"See {img_resp.status_code=} github file {obj}; avatar"
-                    f" {url=}"
+                    f"See {img_resp.status_code=} github file {obj}; avatar {url=}"
                 )
             if img := io.BytesIO(img_resp.content):
                 cf.delete(id)
@@ -128,9 +127,7 @@ class RegisteredMember(BaseModel):
     description: str | None = Field(
         None,
         title="Member Description",
-        description=(
-            "Useful for both SEO and for contextualizing the profile object."
-        ),
+        description="Useful for both SEO and for contextualizing the profile object.",
         min_length=10,
         col=str,
         fts=True,

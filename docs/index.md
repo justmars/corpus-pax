@@ -94,11 +94,14 @@ Each avatar image should be named `avatar.jpeg` so that these can be uploaded to
 
 ### .env
 
-Create an .env file to create/populate the database. See `sample .env` highlighting the following variables:
+Create an .env file to create/populate the database. See `env.example` highlighting the following variables:
 
-1. Cloudflare `CF_ACCT`
-2. Cloudflare `CF_TOKEN`
-3. Github `GH_TOKEN`
+```dotenv
+CF_ACCT_ID=op://dev/cloudflare/acct_id
+CF_IMG_TOKEN=op://dev/cloudflare/images/token
+CF_IMG_HASH=op://dev/cloudflare/images/hash
+GH_TOKEN=op://dev/gh/pat-public/token
+```
 
 Note the workflow (main.yml) where the secrets are included for Github actions. Ensure these are set in the repository's `<url-to-repo>/settings/secrets/actions`, making the proper replacements when the tokens for Cloudflare and Github expire.
 
